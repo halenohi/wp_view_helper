@@ -3,6 +3,8 @@ trait PageDescriptionHelper {
   public function page_description() {
     if (is_single()) {
       return $this->custom_field_description();
+    } elseif (is_page()) {
+      return $this->custom_field_description();
     } elseif (is_category()) {
       return $this->category_description();
     } else {
