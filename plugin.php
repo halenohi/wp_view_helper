@@ -13,7 +13,9 @@ $helper_names = [
   'pagination',
   'url',
   'archive',
-  'debug'
+  'debug',
+  'page_title',
+  'page_description'
 ];
 
 foreach ($helper_names as $helper_name) {
@@ -27,6 +29,8 @@ class WPViewHelper {
   use ArchiveHelper;
   use AssetHelper;
   use DebugHelper;
+  use PageTitleHelper;
+  use PageDescriptionHelper;
 
   public function __construct() {
     $this->__asset_helper_construct();
