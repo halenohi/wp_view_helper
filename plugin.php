@@ -16,7 +16,8 @@ $helper_names = [
   'debug',
   'page_title',
   'page_description',
-  'author_list'
+  'author_list',
+  'breadcrumb'
 ];
 
 foreach ($helper_names as $helper_name) {
@@ -33,6 +34,7 @@ class WPViewHelper {
   use PageTitleHelper;
   use PageDescriptionHelper;
   use AuthorListHelper;
+  use BreadcrumbHelper;
 
   public function __construct() {
     $this->__asset_helper_construct();
