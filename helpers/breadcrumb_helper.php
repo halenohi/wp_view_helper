@@ -48,7 +48,7 @@ trait BreadcrumbHelper {
   }
 
   private function requestPath() {
-    return (!empty($_REQUEST['q']) ? $_REQUEST['q'] : '');
+    return (!empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '');
   }
 
   private function parseForCategory($items, $merge_default = true) {
