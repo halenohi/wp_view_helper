@@ -19,7 +19,8 @@ $helper_names = [
   'author_list',
   'breadcrumb',
   'search_query',
-  'rss_thumbnail'
+  'rss_thumbnail',
+  'tag_list'
 ];
 
 foreach ($helper_names as $helper_name) {
@@ -39,6 +40,7 @@ class WPViewHelper {
   use BreadcrumbHelper;
   use SearchQueryHelper;
   use RssThumbnailHelper;
+  use TagListHelper;
 
   public function __construct() {
     $this->__asset_helper_construct();
