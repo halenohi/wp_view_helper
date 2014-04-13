@@ -19,7 +19,10 @@ $helper_names = [
   'author_list',
   'breadcrumb',
   'search_query',
-  'rss_thumbnail'
+  'rss_thumbnail',
+  'custom_post_type',
+  'form',
+  'mail'
 ];
 
 foreach ($helper_names as $helper_name) {
@@ -39,11 +42,21 @@ class WPViewHelper {
   use BreadcrumbHelper;
   use SearchQueryHelper;
   use RssThumbnailHelper;
+  use CustomPostTypeHelper;
+  use FormHelper;
+  use MailHelper;
 
   public function __construct() {
     $this->__asset_helper_construct();
     $this->__rss_thumbnail_helper_construct();
+    $this->__custom_post_type_construct();
+  }
+
+  static function setOptions() {
+    update_option('permalink_structure', '/%category%/%year%/%monthnum%/%postname%');
+    update_option('home', preg_replace('/\/wp$/', '', get_option('home')));
   }
 }
 
+//register_activation_hook(__FILE__, ['WPViewHelper', 'setOptions']);
 $helper = new WPViewHelper;
