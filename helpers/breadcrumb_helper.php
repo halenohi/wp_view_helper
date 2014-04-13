@@ -83,29 +83,26 @@ trait BreadcrumbHelper {
   }
 
   private function parseForSingle($items) {
+    global $post;
     $cats = [];
     $archives = [];
     $post_results = [];
     foreach ($items as $i => $item) {
-      if (preg_match('/^([0-9]{4})|([0-9]{2})$/', $item)) {
+      if (preg_match('/(^[0-9]{4}$)|(^[0-9]{2}$)/', $item)) {
         $archives[] = $item;
-      } elseif (count($items) !== $i + 1) {
-        $cats[] = $item;
-      } else {
-        $post = get_posts([
-          'post_name' => $item,
-          'post_type' => 'post',
-          'post_status' => 'publish',
-          'posts_per_page' => 1
-        ])[0];
+      } elseif (count($items) - 1 === $i) {
+        $post_result = [];
         $post_result['name'] = $post->post_title;
         $post_result['path'] = $this->requestPath();
         $post_results[] = $post_result;
+      } else {
+        $cats[] = $item;
       }
     }
     $cat_results = $this->parseForCategory($cats, false);
     $archive_results = $this->parseForArchive($archives, false);
-    return array_merge($this->default_results, $cat_results, $archive_results, $post_results);
+    $result = array_merge($this->default_results, $cat_results, $archive_results, $post_results);
+    return $result;
   }
 
   private function parseForPage($items) {

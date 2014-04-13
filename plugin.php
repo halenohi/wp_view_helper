@@ -22,7 +22,8 @@ $helper_names = [
   'rss_thumbnail',
   'custom_post_type',
   'form',
-  'mail'
+  'mail',
+  'tag_list'
 ];
 
 foreach ($helper_names as $helper_name) {
@@ -45,6 +46,7 @@ class WPViewHelper {
   use CustomPostTypeHelper;
   use FormHelper;
   use MailHelper;
+  use TagListHelper;
 
   public function __construct() {
     $this->__asset_helper_construct();
