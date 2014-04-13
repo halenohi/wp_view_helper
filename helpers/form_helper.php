@@ -31,6 +31,7 @@ class WPViewHelper_Form {
   }
 
   public function isValid() {
+    if ($this->isGet()) return true;
     $result = true;
     foreach ($this->options['fields'] as $field) {
       $param = $this->params[$field['name']];
