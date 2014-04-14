@@ -1,5 +1,7 @@
 <?php
 trait CustomPostTypeHelper {
+  public $custom_post_types = [];
+
   public function __custom_post_type_construct() {
     $custom_post_types = [];
     foreach ($this->getConfigs() as $config_json) {
