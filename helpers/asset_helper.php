@@ -33,6 +33,6 @@ trait AssetHelper {
   }
 
   public function image_path($file_name, $theme_name = '') {
-    return $this->asset_path($file_name, 'image', $theme_name);
+    return $this->asset_path($file_name, 'image', '', $theme_name);
   }
 }
