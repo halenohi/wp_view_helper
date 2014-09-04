@@ -3,8 +3,7 @@ trait AssetHelper {
   public $theme_root_path = '';
 
   private function __asset_helper_construct() {
-    $pattern = '/^http(s)?\:\/\/(localhost|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})(\:[0-9]+)?/';
-    $theme_path = preg_replace($pattern, '', get_template_directory_uri());
+    $theme_path = parse_url(get_template_directory_uri(), PHP_URL_PATH);
     $this->theme_root_path = $theme_path . '/';
   }
 
