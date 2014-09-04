@@ -7,6 +7,11 @@ Description: ViewHelper for WordPress development
 Author: kozo yamagata
 */
 
+$vendor_autoload = dirname(__FILE__) . '/vendor/autoload.php';
+if (file_exists($vendor_autoload)) {
+  require_once $vendor_autoload;
+}
+
 $helper_names = [
   'asset',
   'tag',
