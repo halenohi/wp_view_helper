@@ -13,18 +13,18 @@ trait TagHelper {
     return $tag;
   }
 
-  public function javascript_include_tag($file_name) {
-    $path = $this->javascript_path($file_name);
+  public function javascript_include_tag($file_name, $theme_name = '') {
+    $path = $this->javascript_path($file_name, $theme_name);
     return $this->tag('script', '', ['src' => $path, 'type' => 'text/javascript']);
   }
 
-  public function stylesheet_link_tag($file_name) {
-    $path = $this->stylesheet_path($file_name);
+  public function stylesheet_link_tag($file_name, $theme_name = '') {
+    $path = $this->stylesheet_path($file_name, $theme_name);
     return $this->tag('link', '', ['href' => $path, 'rel' => 'stylesheet', 'type' => 'text/css'], true);
   }
 
-  public function image_tag($file_name, $attributes = []) {
-    $path = $this->image_path($file_name);
+  public function image_tag($file_name, $attributes = [], $theme_name = '') {
+    $path = $this->image_path($file_name, $theme_name);
     return $this->tag('img', '', array_merge($attributes, ['src' => $path]), true);
   }
 
