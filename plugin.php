@@ -23,7 +23,8 @@ $helper_names = [
   'custom_post_type',
   'form',
   'mail',
-  'tag_list'
+  'tag_list',
+  'partial'
 ];
 
 foreach ($helper_names as $helper_name) {
@@ -47,6 +48,7 @@ class WPViewHelper {
   use FormHelper;
   use MailHelper;
   use TagListHelper;
+  use PartialHelper;
 
   public function __construct() {
     $this->__asset_helper_construct();
