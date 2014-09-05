@@ -29,7 +29,8 @@ $helper_names = [
   'form',
   'mail',
   'tag_list',
-  'partial'
+  'partial',
+  'dynamic_sidebar'
 ];
 
 foreach ($helper_names as $helper_name) {
@@ -54,6 +55,7 @@ class WPViewHelper {
   use MailHelper;
   use TagListHelper;
   use PartialHelper;
+  use DynamicSidebar;
 
   public function __construct() {
     $this->__asset_helper_construct();
