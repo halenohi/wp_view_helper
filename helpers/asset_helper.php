@@ -3,8 +3,16 @@ trait AssetHelper {
   public $theme_root_path = '';
 
   private function __asset_helper_construct() {
-    $theme_path = parse_url(get_template_directory_uri(), PHP_URL_PATH);
-    $this->theme_root_path = $theme_path . '/';
+    //$theme_path = parse_url(get_template_directory_uri(), PHP_URL_PATH);
+    $splitPath = explode('/', __FILE__);
+    $splitDocumentRootPath = explode('/', $_SERVER['DOCUMENT_ROOT']);
+    $themesDirIndex = array_search('themes', $splitPath);
+    array_splice($splitPath, $themesDirIndex + 2, count($splitPath));
+    $themePath = array_filter($splitPath, function($dir) use ($splitDocumentRootPath) {
+      return !array_search($dir, $splitDocumentRootPath);
+    });
+    $themePath = implode('/', ($themePath)) . '/';
+    $this->theme_root_path = $themePath;
   }
 
   private function change_theme_name($new_name) {
