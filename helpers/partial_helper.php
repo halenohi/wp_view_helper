@@ -14,7 +14,12 @@ trait PartialHelper {
 
   private function makePartialPath($relative_path, $theme_name) {
     $root_path = empty($theme_name) ? $this->theme_root_path : $this->change_theme_name($theme_name);
-    return dirname(WP_CONTENT_DIR) . $root_path . $relative_path;
+    $document_root = $_SERVER['DOCUMENT_ROOT'];
+    $wp_dir = dirname(WP_CONTENT_DIR);
+    if ($document_root != $wp_dir) {
+      $wp_dir = $document_root;
+    }
+    return $wp_dir . $root_path . $relative_path;
   }
 
   private function template() {
